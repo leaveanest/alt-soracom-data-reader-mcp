@@ -112,7 +112,7 @@ def register_stats_tools(mcp: FastMCP) -> None:
                     "session_status": response.get("sessionStatus"),
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}
@@ -198,7 +198,7 @@ def register_stats_tools(mcp: FastMCP) -> None:
                     "last_modified_at": response.get("lastModifiedAt"),
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}

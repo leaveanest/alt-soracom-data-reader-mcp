@@ -88,7 +88,7 @@ SAMユーザーには以下の権限が必要です：
 
 ```bash
 # GitHubから直接インストール
-uv tool install git+https://github.com/xxx/soracom-data-mcp.git
+uv tool install git+https://github.com/leaveanest/alt-soracom-data-reader-mcp.git
 
 # 実行
 soracom-data-mcp --mode harvest
@@ -96,7 +96,7 @@ soracom-data-mcp --mode harvest
 
 ```bash
 # または、uvxで一時的に実行（インストール不要）
-uvx --from git+https://github.com/xxx/soracom-data-mcp.git soracom-data-mcp --mode harvest
+uvx --from git+https://github.com/leaveanest/alt-soracom-data-reader-mcp.git soracom-data-mcp --mode harvest
 ```
 
 ### モード
@@ -143,7 +143,7 @@ export SORACOM_COVERAGE="jp"            # オプション（デフォルト: jp�
     "soracom-harvest": {
       "command": "uvx",
       "args": [
-        "--from", "git+https://github.com/xxx/soracom-data-mcp.git",
+        "--from", "git+https://github.com/leaveanest/alt-soracom-data-reader-mcp.git",
         "soracom-data-mcp", "--mode", "harvest"
       ],
       "env": {

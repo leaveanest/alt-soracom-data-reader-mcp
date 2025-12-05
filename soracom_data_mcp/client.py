@@ -113,7 +113,8 @@ class SoracomClient:
         if response.status_code == 204:
             return {}
 
-        return response.json()
+        result: dict[str, Any] | list[Any] = response.json()
+        return result
 
     def get(
         self, path: str, params: dict[str, Any] | None = None

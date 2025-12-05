@@ -58,7 +58,7 @@ def register_harvest_tools(mcp: FastMCP) -> None:
                     "count": len(response),
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}
@@ -110,7 +110,7 @@ def register_harvest_tools(mcp: FastMCP) -> None:
                     "count": len(response),
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}
@@ -160,7 +160,7 @@ def register_harvest_tools(mcp: FastMCP) -> None:
                     "count": len(response),
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}

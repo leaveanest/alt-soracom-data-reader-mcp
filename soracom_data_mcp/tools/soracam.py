@@ -53,7 +53,7 @@ def register_soracam_tools(mcp: FastMCP) -> None:
                     "count": len(devices),
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}
@@ -82,7 +82,7 @@ def register_soracam_tools(mcp: FastMCP) -> None:
                     "configuration": response.get("configuration"),
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}
@@ -144,7 +144,7 @@ def register_soracam_tools(mcp: FastMCP) -> None:
                     "count": len(events),
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}
@@ -175,7 +175,7 @@ def register_soracam_tools(mcp: FastMCP) -> None:
                     "details": response,
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}
@@ -185,13 +185,13 @@ def register_soracam_tools(mcp: FastMCP) -> None:
     # ===================
 
     @mcp.tool()
-    def list_soracam_videos(
+    def list_soracam_recordings(
         device_id: str,
         from_time: int | None = None,
         to_time: int | None = None,
     ) -> dict[str, Any]:
         """
-        ソラカメの録画一覧を取得します
+        ソラカメの録画期間とイベント情報を取得します
 
         Args:
             device_id: デバイスID
@@ -199,7 +199,7 @@ def register_soracam_tools(mcp: FastMCP) -> None:
             to_time: 取得終了時刻（UNIXタイムスタンプ・ミリ秒）
 
         Returns:
-            録画一覧
+            録画期間とイベント情報
         """
         try:
             params: dict[str, Any] = {}
@@ -209,16 +209,17 @@ def register_soracam_tools(mcp: FastMCP) -> None:
                 params["to"] = to_time
 
             response = soracom_client.get(
-                f"/sora_cam/devices/{device_id}/videos", params=params
+                f"/sora_cam/devices/{device_id}/recordings_and_events", params=params
             )
 
-            if isinstance(response, list):
+            if isinstance(response, dict):
                 return {
-                    "videos": response,
-                    "count": len(response),
+                    "recordings": response.get("recordings", []),
+                    "events": response.get("events", []),
+                    "data": response,
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}
@@ -252,7 +253,7 @@ def register_soracam_tools(mcp: FastMCP) -> None:
                     "details": response,
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}
@@ -290,7 +291,7 @@ def register_soracam_tools(mcp: FastMCP) -> None:
                     "details": response,
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}
@@ -323,7 +324,7 @@ def register_soracam_tools(mcp: FastMCP) -> None:
                     "details": response,
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}
@@ -349,7 +350,7 @@ def register_soracam_tools(mcp: FastMCP) -> None:
                     "details": response,
                 }
 
-            return response
+            return {"data": response}
 
         except SoracomApiError as e:
             return {"error": handle_soracom_error(e)}

@@ -2,13 +2,19 @@
 name = "alt-soracom-data-reader-mcp"
 version = "0.1.0"
 description = "MCP server for SORACOM data analysis"
+authors = [{ name = "straydog" }]
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.11"
 dependencies = [
     "fastmcp>=2.13.3",
     "pydantic-settings>=2.12.0",
     "httpx>=0.28.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/leaveanest/alt-soracom-data-reader-mcp"
+Repository = "https://github.com/leaveanest/alt-soracom-data-reader-mcp"
 
 [project.scripts]
 soracom-data-mcp = "soracom_data_mcp:main"
@@ -18,7 +24,26 @@ dev = [
     "pytest>=9.0.1",
     "pytest-asyncio>=0.25.0",
     "ruff>=0.14.8",
+    "mypy>=1.14.0",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+disable_error_code = ["attr-defined"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["soracom_data_mcp"]

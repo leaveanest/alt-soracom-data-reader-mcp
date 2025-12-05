@@ -1,0 +1,68 @@
+{
+  "mcpServers": {
+    "soracom-harvest": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/path/to/soracom-data-mcp",
+        "soracom-data-mcp",
+        "--mode",
+        "harvest"
+      ],
+      "env": {
+        "SORACOM_AUTH_KEY_ID": "keyId-xxx",
+        "SORACOM_AUTH_KEY": "secret-xxx",
+        "SORACOM_COVERAGE": "jp"
+      }
+    },
+    "soracom-soracam": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/path/to/soracom-data-mcp",
+        "soracom-data-mcp",
+        "--mode",
+        "soracam"
+      ],
+      "env": {
+        "SORACOM_AUTH_KEY_ID": "keyId-xxx",
+        "SORACOM_AUTH_KEY": "secret-xxx",
+        "SORACOM_COVERAGE": "jp"
+      }
+    },
+    "soracom-stats": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/path/to/soracom-data-mcp",
+        "soracom-data-mcp",
+        "--mode",
+        "stats"
+      ],
+      "env": {
+        "SORACOM_AUTH_KEY_ID": "keyId-xxx",
+        "SORACOM_AUTH_KEY": "secret-xxx",
+        "SORACOM_COVERAGE": "jp"
+      }
+    },
+    "soracom-all": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/path/to/soracom-data-mcp",
+        "soracom-data-mcp",
+        "--mode",
+        "all"
+      ],
+      "env": {
+        "SORACOM_AUTH_KEY_ID": "keyId-xxx",
+        "SORACOM_AUTH_KEY": "secret-xxx",
+        "SORACOM_COVERAGE": "jp"
+      }
+    }
+  }
+}
